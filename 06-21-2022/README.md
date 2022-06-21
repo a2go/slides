@@ -1,5 +1,5 @@
-# [Meetup 06-21-2022](https://talks.golang.org/github.com/a2go/slides/06-21-2022/meetup.slide)
+# [Meetup 06-21-2022](https://talks.a2go.org/06-21-2022/meetup.slide)
 
 ## Agenda
 
-1. [Generics](https://talks.golang.org/github.com/a2go/slides/06-21-2022/generics.slide)
+1. [Generics](https://talks.a2go.org/06-21-2022/generics.slide)
