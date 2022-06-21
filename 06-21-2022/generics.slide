@@ -1,0 +1,62 @@
+# Generics
+12:00 21 Jun 2022
+Tags: meetup, lightning talk
+Summary: Introduction to generics in Golang 1.18
+
+Antonio Mika
+Senior SRE
+antonio@mik.qa
+https://antonio.cx/
+@antonio_me
+
+## What Are Generics?
+
+<br>
+
+> *"a style of computer programming in which algorithms are written in terms of types
+> to-be-specified-later that are then instantiated when needed for specific types provided as parameters"* [1]
+
+<br>
+
+- Allows for strongly typed functions to be written once, and *generically* applied to other types that define certain constraints
+- Promotes code reuse by limiting duplication
+
+<br>
+<br>
+
+[1] https://en.wikipedia.org/wiki/Generic_programming
+
+## What Do Generics Look Like?
+
+.code -edit -numbers example/main.go /^func MapKeys/,/^}/
+<sub><sup>* Example from [Go by Example](https://gobyexample.com/generics)</sup></sub>
+
+- `any = interface{}`
+- `comparable = any` *that can be compared for (in)equality*
+- Defines a generic function that takes `map[comparable]any` and returns a list of its keys: `[]comparable`
+- It's that simple!
+
+## Calling Generics
+
+.play -edit -numbers example/main.go /^func main/,/^}/
+
+- `MapKeys` can then be called as:
+  - `MapKeys(map[string]string{"foo":"bar"})` using type inference
+  - `MapKeys[string, string](map[string]string{"foo":"bar"})` explicitly
+
+## Why Are Generics Useful?
+
+- Decreasing code duplication!
+  - Create a contains function that checks whether or not `[]comparable` includes a `comparable` value
+  - Create a diffing function of two maps/slices
+  - Create a synchronous map using sync.Map that doesn't require `interface{}` and type casting
+- They're pretty fun! Checkout the [slices](https://pkg.go.dev/golang.org/x/exp/slices) package for more examples
+
+## Real World Examples!
+
+- [sish](https://github.com/antoniomika/sish) was switched from using [sync.Map](https://pkg.go.dev/sync#Map) to a package called [syncmap](https://github.com/antoniomika/syncmap)
+  - [d9bcc08292247972ec1c99847f92f13c9b12203e](https://github.com/antoniomika/sish/commit/d9bcc08292247972ec1c99847f92f13c9b12203e#diff-9c837d152bffaa110a4b42c59f48be9a8deedaa4a92bb094990750153a294058)
+
+## Simple map
+
+.play -edit -numbers example2/main.go /^func main/,/^}/
