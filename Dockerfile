@@ -8,4 +8,4 @@ COPY . .
 
 EXPOSE 8080
 
-ENTRYPOINT ["/go/bin/present", "-base", "/go/pkg/mod/golang.org/x/tools@v0.1.11/cmd/present", "-use_playground", "-content", "/data/presentations", "-http", ":8080"]
+ENTRYPOINT ["/go/bin/present", "-base", "/go/pkg/mod/golang.org/x/tools@v0.1.11/cmd/present", "-use_playground", "-content", "/data", "-http", ":8080"]
