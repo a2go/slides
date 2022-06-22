@@ -2,7 +2,6 @@ FROM golang:1.18-alpine
 
 WORKDIR /data
 
-RUN apk add --no-cache git
 RUN go install golang.org/x/tools/cmd/present@latest
 
 COPY . .
