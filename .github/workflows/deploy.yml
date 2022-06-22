@@ -9,8 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      id-token: 'read'
     steps:
       - uses: actions/checkout@v3
       - name: Set up QEMU
