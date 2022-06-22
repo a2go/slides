@@ -43,3 +43,5 @@ jobs:
         with:
           image: us-central1-docker.pkg.dev/vaulted-anthem-354102/slides/slides:latest
           service: slides
+      - name: Delete Image from Artifact Registry
+        run: gcloud artifacts docker images delete us-central1-docker.pkg.dev/vaulted-anthem-354102/slides/slides:latest
