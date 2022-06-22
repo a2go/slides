@@ -31,13 +31,15 @@ jobs:
         uses: google-github-actions/setup-gcloud@v0
       - name: Login to Artifact Registry
         run: gcloud auth configure-docker us-central1-docker.pkg.dev
-      - name: Build and Push
+      - name: Build and Load
         uses: docker/build-push-action@v3
         with:
-          push: true
+          load: true
           tags: |
             ghcr.io/a2go/slides:latest
             us-central1-docker.pkg.dev/vaulted-anthem-354102/slides:latest
+      - name: Push to Registries
+        run: docker push ghcr.io/a2go/slides:latest && docker push us-central1-docker.pkg.dev/vaulted-anthem-354102/slides:latest
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v0
         with:
